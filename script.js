@@ -2,31 +2,51 @@
 // 1 - logika
 // 2 - render
 
-class Search {
+class SearchList {
   constructor() {
     this.input = document.querySelector(".input");
     this.searchBtn = document.querySelector(".searchBtn");
     // this.getApi();
-    this.searchBtn.addEventListener("click", this.getSearchName.bind(this));
+    this.API_SEARCH = `https://api.potterdb.com/v1/characters?filter[name_cont]=`;
+    this.searchBtn.addEventListener("click", this.getSearchNames.bind(this));
   }
-  getApi(searchedName) {
-    fetch(
-      `https://api.potterdb.com/v1/characters?filter[name_cont]=${searchedName}`,
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        const searchedList = data;
-      });
-  }
-  getSearchName() {
+
+  getSearchNames() {
     // const searchedName = "Weasley";
     const searchedName = this.input.value;
-    // console.log(searchedName);
-    // console.log(this.input.value);
+    console.log(searchedName);
     this.getApi(searchedName);
   }
 
-  getData() {}
+  getApi(searchedName) {
+    fetch(`${this.API_SEARCH}${searchedName}`)
+      .then((response) => response.json())
+      .then((data) => {
+        const searchedList = data;
+        console.log(searchedList);
+        this.getListCharacters(searchedList.data);
+      });
+  }
+
+  getListCharacters(searchedList) {
+    searchedList.forEach((person) => {
+      // this.renderList(person);
+      console.log(person);
+    });
+  }
+
+  renderList(person) {
+    const {
+      personId: id,
+      external: title,
+      thumb: thumbnail,
+      gameID: data,
+    } = person;
+  }
 }
 
-const search = new Search();
+class SearchPerson {
+  constructor() {}
+}
+
+const search = new SearchList();

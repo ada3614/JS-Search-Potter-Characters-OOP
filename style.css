@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --red: #641e1e;
+  --yellow: #c39a1c;
+  --brown: #3d2f22;
+  --grey: #717679;
+  --white: #efeee9;
+  --black: #040f16;
+
+  --main-font: "Irish Grover", system-ui;
+  --secondary-font: "Montserrat", sans-serif;
+}
+
+body {
+  background-color: var(--white);
+  color: var(--black);
+  font-family: var(--secondary-font);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  padding: 24px;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* HEADER */
+
+header {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+}
+
+h1.title {
+  font-family: var(--main-font);
+  font-weight: 900;
+}
+
+/* INPUT */
+input {
+  height: 36px;
+  width: 360px;
+}
+button.searchBtn {
+  height: 36px;
+  width: 120px;
+}
+
+.list-wrapper {
+  margin-top: 24px;
+}
+
+.list-item-img {
+  width: 120px;
+  height: auto;
+}
